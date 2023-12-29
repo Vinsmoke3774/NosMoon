@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4AECC47D-098A-4493-8E1E-D10EDBB7A189}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNos.DAL.EF</RootNamespace>
+    <AssemblyName>OpenNos.DAL.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.15\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BattlePassItem.cs" />
+    <Compile Include="BattlePassItemLogs.cs" />
+    <Compile Include="BattlePassQuest.cs" />
+    <Compile Include="BattlePassQuestLogs.cs" />
+    <Compile Include="CellonOption.cs" />
+    <Compile Include="CharacterTimespaceLog.cs" />
+    <Compile Include="CharacterSkyTower.cs" />
+    <Compile Include="CharacterQuest.cs" />
+    <Compile Include="CharacterTitle.cs" />
+    <Compile Include="ChatLogEntity.cs" />
+    <Compile Include="BattlePassPalier.cs" />
+    <Compile Include="CommandLog.cs" />
+    <Compile Include="Comparers\CellonOptionComparer.cs" />
+    <Compile Include="FishInfo.cs" />
+    <Compile Include="FishingLog.cs" />
+    <Compile Include="FishingSpots.cs" />
+    <Compile Include="InstantBattleLog.cs" />
+    <Compile Include="LevelUpRewardEntity.cs" />
+    <Compile Include="MaintenanceLog.cs" />
+    <Compile Include="Migrations\202112271805342_nosmoon.cs" />
+    <Compile Include="Migrations\202112271805342_nosmoon.designer.cs">
+      <DependentUpon>202112271805342_nosmoon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204221133027_matchmaking.cs" />
+    <Compile Include="Migrations\202204221133027_matchmaking.designer.cs">
+      <DependentUpon>202204221133027_matchmaking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204251116473_AliveCountdown.cs" />
+    <Compile Include="Migrations\202204251116473_AliveCountdown.designer.cs">
+      <DependentUpon>202204251116473_AliveCountdown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312281944328_addons.cs" />
+    <Compile Include="Migrations\202312281944328_addons.designer.cs">
+      <DependentUpon>202312281944328_addons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312282011006_burgu.cs" />
+    <Compile Include="Migrations\202312282011006_burgu.designer.cs">
+      <DependentUpon>202312282011006_burgu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312282026384_0101.cs" />
+    <Compile Include="Migrations\202312282026384_0101.designer.cs">
+      <DependentUpon>202312282026384_0101.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MimicRotation.cs" />
+    <Compile Include="Participant.cs" />
+    <Compile Include="PartnerSkill.cs" />
+    <Compile Include="Quest.cs" />
+    <Compile Include="QuestLog.cs" />
+    <Compile Include="QuestObjective.cs" />
+    <Compile Include="QuestReward.cs" />
+    <Compile Include="RecipeList.cs" />
+    <Compile Include="RefreshToken.cs" />
+    <Compile Include="RollGeneratedItem.cs" />
+    <Compile Include="Mate.cs" />
+    <Compile Include="ScriptedInstance.cs" />
+    <Compile Include="BCard.cs" />
+    <Compile Include="ShellEffect.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="Base\SynchronizableBaseEntity.cs" />
+    <Compile Include="BazaarItem.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharacterRelation.cs" />
+    <Compile Include="CharacterSkill.cs" />
+    <Compile Include="Combo.cs" />
+    <Compile Include="Drop.cs" />
+    <Compile Include="Family.cs" />
+    <Compile Include="FamilyCharacter.cs" />
+    <Compile Include="FamilyLog.cs" />
+    <Compile Include="GeneralLog.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemInstance.cs" />
+    <Compile Include="Mail.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="MapMonster.cs" />
+    <Compile Include="MapType.cs" />
+    <Compile Include="MapTypeMap.cs" />
+    <Compile Include="MinilandObject.cs" />
+    <Compile Include="PenaltyLog.cs" />
+    <Compile Include="RespawnMapType.cs" />
+    <Compile Include="StaticBonus.cs" />
+    <Compile Include="StaticBuff.cs" />
+    <Compile Include="MapNpc.cs" />
+    <Compile Include="NpcMonster.cs" />
+    <Compile Include="NpcMonsterSkill.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Context\OpenNosContext.cs" />
+    <Compile Include="Portal.cs" />
+    <Compile Include="QuicklistEntry.cs" />
+    <Compile Include="Recipe.cs" />
+    <Compile Include="RecipeItem.cs" />
+    <Compile Include="Respawn.cs" />
+    <Compile Include="Shop.cs" />
+    <Compile Include="ShopItem.cs" />
+    <Compile Include="Helpers\DataAccessHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shopskill.cs" />
+    <Compile Include="Skill.cs" />
+    <Compile Include="Teleporter.cs" />
+    <Compile Include="MinigameLog.cs" />
+    <Compile Include="TitleLog.cs" />
+    <Compile Include="TitleWearConditionEntity.cs" />
+    <Compile Include="TwoFactorBackup.cs" />
+    <Compile Include="WhitelistedPlayerEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NosByte.Shared\NosByte.Shared.csproj">
+      <Project>{01D11100-9688-476E-BF34-563CB1BA2993}</Project>
+      <Name>NosByte.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Core\OpenNos.Core.csproj">
+      <Project>{c93a0a40-0551-4732-b594-171b87679ac1}</Project>
+      <Name>OpenNos.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.DAL.Interface\OpenNos.DAL.Interface.csproj">
+      <Project>{175c851b-8dc8-43a5-af93-af32d106cd77}</Project>
+      <Name>OpenNos.DAL.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Data\OpenNos.Data.csproj">
+      <Project>{F1071DED-3D92-4416-9B9C-8664441ADE64}</Project>
+      <Name>OpenNos.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Domain\OpenNos.Domain.csproj">
+      <Project>{20addddd-dad9-44f3-9beb-026c73090660}</Project>
+      <Name>OpenNos.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202112271805342_nosmoon.resx">
+      <DependentUpon>202112271805342_nosmoon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204221133027_matchmaking.resx">
+      <DependentUpon>202204221133027_matchmaking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204251116473_AliveCountdown.resx">
+      <DependentUpon>202204251116473_AliveCountdown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312281944328_addons.resx">
+      <DependentUpon>202312281944328_addons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312282011006_burgu.resx">
+      <DependentUpon>202312282011006_burgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312282026384_0101.resx">
+      <DependentUpon>202312282026384_0101.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

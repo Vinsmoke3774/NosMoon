@@ -1,0 +1,177 @@
+﻿/*
+ * This file is part of the OpenNos Emulator Project. See AUTHORS file for Copyright information
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+using OpenNos.Core;
+using OpenNos.Core.Logger;
+using OpenNos.DAL.EF;
+using OpenNos.DAL.EF.Helpers;
+using OpenNos.DAL.Interface;
+using OpenNos.Data;
+using OpenNos.Data.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace OpenNos.DAL.DAO
+{
+    public class FamilyCharacterDAO : IFamilyCharacterDAO
+    {
+        #region Methods
+
+        public DeleteResult Delete(long characterId)
+        {
+            try
+            {
+                using var context = DataAccessHelper.CreateContext();
+                var familyCharacter = context.FamilyCharacter.FirstOrDefault(c => c.CharacterId == characterId);
+
+                if (familyCharacter == null)
+                {
+                    return DeleteResult.NotFound;
+                }
+
+                context.FamilyCharacter.Remove(familyCharacter);
+                context.SaveChanges();
+
+                return DeleteResult.Deleted;
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(string.Format(Language.Instance.GetMessageFromKey("DELETE_FAMILYCHARACTER_ERROR"), e.Message), e);
+                return DeleteResult.Error;
+            }
+        }
+
+        public SaveResult InsertOrUpdate(ref FamilyCharacterDTO character)
+        {
+            try
+            {
+                using var context = DataAccessHelper.CreateContext();
+                var familyCharacterId = character.FamilyCharacterId;
+                var entity = context.FamilyCharacter.FirstOrDefault(c => c.FamilyCharacterId.Equals(familyCharacterId));
+
+                if (entity == null)
+                {
+                    character = insert(character, context);
+                    return SaveResult.Inserted;
+                }
+
+                character = update(entity, character, context);
+                return SaveResult.Updated;
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(string.Format(Language.Instance.GetMessageFromKey("INSERT_ERROR"), character, e.Message), e);
+                return SaveResult.Error;
+            }
+        }
+
+        public FamilyCharacterDTO LoadByCharacterId(long characterId)
+        {
+            try
+            {
+                using var context = DataAccessHelper.CreateContext();
+                var dto = new FamilyCharacterDTO();
+                if (Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(context.FamilyCharacter.FirstOrDefault(c => c.CharacterId == characterId), dto))
+                {
+                    return dto;
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(null, e);
+                return null;
+            }
+        }
+
+        public IList<FamilyCharacterDTO> LoadByFamilyId(long familyId)
+        {
+            using var context = DataAccessHelper.CreateContext();
+            var result = new List<FamilyCharacterDTO>();
+            foreach (var entity in context.FamilyCharacter.Where(fc => fc.FamilyId.Equals(familyId)))
+            {
+                var dto = new FamilyCharacterDTO();
+                Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(entity, dto);
+                result.Add(dto);
+            }
+            return result;
+        }
+
+        public FamilyCharacterDTO LoadById(long familyCharacterId)
+        {
+            try
+            {
+                using var context = DataAccessHelper.CreateContext();
+                var dto = new FamilyCharacterDTO();
+                if (Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(context.FamilyCharacter.FirstOrDefault(c => c.FamilyCharacterId.Equals(familyCharacterId)), dto))
+                {
+                    return dto;
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(null, e);
+                return null;
+            }
+        }
+
+        public IEnumerable<FamilyCharacterDTO> LoadAll()
+        {
+            using var context = DataAccessHelper.CreateContext();
+            var result = new List<FamilyCharacterDTO>();
+            foreach (var entity in context.FamilyCharacter)
+            {
+                var dto = new FamilyCharacterDTO();
+                Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(entity, dto);
+                result.Add(dto);
+            }
+            return result;
+        }
+
+        private static FamilyCharacterDTO insert(FamilyCharacterDTO character, OpenNosContext context)
+        {
+            var entity = new FamilyCharacter();
+            Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacter(character, entity);
+            context.FamilyCharacter.Add(entity);
+            context.SaveChanges();
+            if (Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(entity, character))
+            {
+                return character;
+            }
+
+            return null;
+        }
+
+        private static FamilyCharacterDTO update(FamilyCharacter entity, FamilyCharacterDTO character, OpenNosContext context)
+        {
+            if (entity != null)
+            {
+                Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacter(character, entity);
+                context.SaveChanges();
+            }
+            if (Mapper.Mappers.FamilyCharacterMapper.ToFamilyCharacterDTO(entity, character))
+            {
+                return character;
+            }
+
+            return null;
+        }
+
+        #endregion
+    }
+}

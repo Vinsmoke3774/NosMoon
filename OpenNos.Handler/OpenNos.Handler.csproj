@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A6748A8D-0D96-41B9-A110-DBF692AFC56D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenNos.Handler</RootNamespace>
+    <AssemblyName>OpenNos.Handler</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>..\ProjectRuleset.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=2020.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2020.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Reactive, Version=4.4.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.4.4.1\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0-preview.18571.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Login\LoginPacketHandler.cs" />
+    <Compile Include="SharedMethods\SharedBattleMethods.cs" />
+    <Compile Include="SharedMethods\SharedCharacterScreenMethods.cs" />
+    <Compile Include="SharedMethods\SharedInventoryMethods.cs" />
+    <Compile Include="SharedMethods\SharedMateMethods.cs" />
+    <Compile Include="SharedMethods\SharedMinilandMethods.cs" />
+    <Compile Include="SharedMethods\SharedNpcMethods.cs" />
+    <Compile Include="World\Basic\AddRelationPacketHandler.cs" />
+    <Compile Include="World\Basic\BlackListAddPacketHandler.cs" />
+    <Compile Include="World\Basic\BlacklistDeletePacketHandler.cs" />
+    <Compile Include="World\Basic\CharacterOptionChangePacketHandler.cs" />
+    <Compile Include="World\Basic\ComplimentPacketHandler.cs" />
+    <Compile Include="World\Basic\DirectionPacketHandler.cs" />
+    <Compile Include="World\Basic\DistantBlacklistAddPacketHandler.cs" />
+    <Compile Include="World\Basic\DistantGroupJoinPacketHandler.cs" />
+    <Compile Include="World\Basic\DistantRelationAddPacketHandler.cs" />
+    <Compile Include="World\Basic\EquipTitlePacketHandler.cs" />
+    <Compile Include="World\Basic\FriendDeletePacketHandler.cs" />
+    <Compile Include="World\Basic\FriendTalkPacketHandler.cs" />
+    <Compile Include="World\Basic\GameStartPacketHandler.cs" />
+    <Compile Include="World\Basic\GboxPacketHandler.cs" />
+    <Compile Include="World\Basic\GetGiftPacketHandler.cs" />
+    <Compile Include="World\Basic\GetNcifPacketHandler.cs" />
+    <Compile Include="World\Basic\GetStatsPacketHandler.cs" />
+    <Compile Include="World\Basic\GroupTalkPacketHandler.cs" />
+    <Compile Include="World\Basic\GuriPacketHandler.cs" />
+    <Compile Include="World\Basic\HeroChatPacketHandler.cs" />
+    <Compile Include="World\Basic\JoinGroupPacketHandler.cs" />
+    <Compile Include="World\Basic\LeaveGroupPacketHandler.cs" />
+    <Compile Include="World\Basic\LeaveRbbPacketHandler.cs" />
+    <Compile Include="World\Basic\PreqPacketHandler.cs" />
+    <Compile Include="World\Basic\PulsePacketHandler.cs" />
+    <Compile Include="World\Basic\QtPacketHandler.cs" />
+    <Compile Include="World\Basic\RaidManagePacketHandler.cs" />
+    <Compile Include="World\Basic\RegisterRaidListPacketHandler.cs" />
+    <Compile Include="World\Basic\ReqInfoPacketHandler.cs" />
+    <Compile Include="World\Basic\RestPacketHandler.cs" />
+    <Compile Include="World\Basic\RevivePacketHandler.cs" />
+    <Compile Include="World\Basic\SayPacketHandler.cs" />
+    <Compile Include="World\Basic\SendBubbleMessagePacketHandler.cs" />
+    <Compile Include="World\Basic\SendMailPacketHandler.cs" />
+    <Compile Include="World\Basic\SetQuickListPacketHandler.cs" />
+    <Compile Include="World\Basic\WalkPacketHandler.cs" />
+    <Compile Include="World\Basic\WhisperPacketHandler.cs" />
+    <Compile Include="World\BattlePass\BpMselPacketHandler.cs" />
+    <Compile Include="World\BattlePass\BpPSelPacketHandler.cs" />
+    <Compile Include="World\BattlePass\OpenBattlePassPacketHandler.cs" />
+    <Compile Include="World\Battle\FalconSkillPacketHandler.cs" />
+    <Compile Include="World\Battle\MultiTargetListPacketHandler.cs" />
+    <Compile Include="World\Battle\UseSkillPacketHandler.cs" />
+    <Compile Include="World\Battle\UseZoneSkillPacketHandler.cs" />
+    <Compile Include="World\Bazaar\BuyBazaarPacketHandler.cs" />
+    <Compile Include="World\Bazaar\GetBazaarPacketHandler.cs" />
+    <Compile Include="World\Bazaar\ModPriceBazaarPacketHandler.cs" />
+    <Compile Include="World\Bazaar\OpenBazaarPacketHandler.cs" />
+    <Compile Include="World\Bazaar\RefreshBazaarPacketHandler.cs" />
+    <Compile Include="World\Bazaar\RefreshPersonalListPacketHandler.cs" />
+    <Compile Include="World\Bazaar\SellBazaarPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\CreateCharacterPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\CreateMartialArtistPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\DeleteCharacterPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\EntryPointPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\RenameCharacterPacketHandler.cs" />
+    <Compile Include="World\CharacterScreen\SelectCharacterPacketHandler.cs" />
+    <Compile Include="World\Commands\AccountInfoCommand.cs" />
+    <Compile Include="World\Commands\Act4StatsCommand.cs" />
+    <Compile Include="World\Commands\AddCellonOptionCommand.cs" />
+    <Compile Include="World\Commands\ClearShellCommand.cs" />
+    <Compile Include="World\Commands\FixEventCommand.cs" />
+    <Compile Include="World\Commands\ForceHeapCommand.cs" />
+    <Compile Include="World\Commands\GetMultisPacketHandler.cs" />
+    <Compile Include="World\Commands\LinkAccountCommand.cs" />
+    <Compile Include="World\Commands\PrivateArenaKickCommand.cs" />
+    <Compile Include="World\Commands\RestoreAccountCommand.cs" />
+    <Compile Include="World\Commands\RestoreCharacterCommand.cs" />
+    <Compile Include="World\Family\FamilyTalkPacketHandler.cs" />
+    <Compile Include="World\Family\ChangeFamilyAuthorityPacketHandler.cs" />
+    <Compile Include="World\Family\CmdChangeRankPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyGoldPacketHandler.cs" />
+    <Compile Include="World\Family\CmdFamilyBankDonationPacketHandler.cs" />
+    <Compile Include="World\Family\CmdFamilyDonationPacketHandler.cs" />
+    <Compile Include="World\Family\CmdFamilyInvitePacketHandler.cs" />
+    <Compile Include="World\Family\CmdFamilyNoticePacketHandler.cs" />
+    <Compile Include="World\Family\CmdTodayMessagePacketHandler.cs" />
+    <Compile Include="World\Family\FamilyCallPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyCreatePacketHandler.cs" />
+    <Compile Include="World\Family\FamilyDepositPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyDismissPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyKickPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyLeavePacketHandler.cs" />
+    <Compile Include="World\Family\FamilyListPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyManagementPacketHandler.cs" />
+    <Compile Include="World\Family\FamilyRepositoryPacketHandler.cs" />
+    <Compile Include="World\Family\JoinFamilyPacketHandler.cs" />
+    <Compile Include="World\Family\RefreshFamilyHistoryPacketHandler.cs" />
+    <Compile Include="World\Family\UiChangeRankPacketHandler.cs" />
+    <Compile Include="World\Family\UiTodayMessagePacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\DeleteItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\DepositPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\EquipmentInfoPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\ExchangeListPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\ExchangeRequestPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\GetItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\MoveEquipmentPacketHandler.cs" />
+    <Compile Include="LockPacketHandler.cs" />
+    <Compile Include="UselessPacketHandler.cs" />
+    <Compile Include="CommandPacketHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="World\InventoryPacketHandlers\MoveItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\PutItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\RemoveItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\ReposPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\SortOpenPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\SpecialistHolderPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\SpTransformPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\UpgradePacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\UseItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\WearItemPacketHandler.cs" />
+    <Compile Include="World\InventoryPacketHandlers\WithdrawItemPacketHandler.cs" />
+    <Compile Include="World\Mates\MateAttackPacketHandler.cs" />
+    <Compile Include="World\Mates\MateSpecialSkillPacketHandler.cs" />
+    <Compile Include="World\Mates\PetMovePacketHandler.cs" />
+    <Compile Include="World\Mates\PetTalkPacketHandler.cs" />
+    <Compile Include="World\Mates\PslPacketHandler.cs" />
+    <Compile Include="World\Mates\PsOpPacketHandler.cs" />
+    <Compile Include="World\Mates\UsePartnerSkillPacketHandler.cs" />
+    <Compile Include="World\Miniland\AddMinilandObjectPacketHandler.cs" />
+    <Compile Include="World\Miniland\JoinMinilandPacketHandler.cs" />
+    <Compile Include="World\Miniland\MiniGamePlayPacketHandler.cs" />
+    <Compile Include="World\Miniland\MinilandEditPacketHandler.cs" />
+    <Compile Include="World\Miniland\MinilandRemovePacketHandler.cs" />
+    <Compile Include="World\Miniland\UseMinilandObjectPacketHandler.cs" />
+    <Compile Include="World\Npc\BuyShopPacketHandler.cs" />
+    <Compile Include="World\Npc\CreateShopPacketHandler.cs" />
+    <Compile Include="World\Npc\NRunPacketHandler.cs" />
+    <Compile Include="World\Npc\PdtsePacketHandler.cs" />
+    <Compile Include="World\Npc\SellShopPacketHandler.cs" />
+    <Compile Include="World\Npc\ShoppingPacketHandler.cs" />
+    <Compile Include="World\Npc\ShowShopPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\ArenaCallPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\CancelButtonPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\EscapePacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\GenerateRaidPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\GetGiftPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\SPreqPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\GetTreqPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\GetWreqPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\GitPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\InstanceExitPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\RStartPacketHandler.cs" />
+    <Compile Include="World\ScriptedInstance\SearchNamePacketHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NosByte.Packets\NosByte.Packets.csproj">
+      <Project>{391B05C3-E86B-4CF8-A48F-CE0FB4BC7863}</Project>
+      <Name>NosByte.Packets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NosByte.Shared\NosByte.Shared.csproj">
+      <Project>{01D11100-9688-476E-BF34-563CB1BA2993}</Project>
+      <Name>NosByte.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Core\OpenNos.Core.csproj">
+      <Project>{c93a0a40-0551-4732-b594-171b87679ac1}</Project>
+      <Name>OpenNos.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.DAL.EF\OpenNos.DAL.EF.csproj">
+      <Project>{4AECC47D-098A-4493-8E1E-D10EDBB7A189}</Project>
+      <Name>OpenNos.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.DAL.Interface\OpenNos.DAL.Interface.csproj">
+      <Project>{175c851b-8dc8-43a5-af93-af32d106cd77}</Project>
+      <Name>OpenNos.DAL.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.DAL\OpenNos.DAL.csproj">
+      <Project>{d8c8a266-3d46-42c5-a492-28c75db85ba8}</Project>
+      <Name>OpenNos.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Data\OpenNos.Data.csproj">
+      <Project>{f1071ded-3d92-4416-9b9c-8664441ade64}</Project>
+      <Name>OpenNos.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Domain\OpenNos.Domain.csproj">
+      <Project>{20addddd-dad9-44f3-9beb-026c73090660}</Project>
+      <Name>OpenNos.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.GameObject\OpenNos.GameObject.csproj">
+      <Project>{eadd17be-20a4-4589-830e-e41be9314928}</Project>
+      <Name>OpenNos.GameObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Mapper\OpenNos.Mapper.csproj">
+      <Project>{057B5A6F-378A-4BD9-B17B-074C7F5C9FEC}</Project>
+      <Name>OpenNos.Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.Master.Library\OpenNos.Master.Library.csproj">
+      <Project>{8FABDA5B-C873-4E32-A78F-08A9A4768595}</Project>
+      <Name>OpenNos.Master.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenNos.XMLModel\OpenNos.XMLModel.csproj">
+      <Project>{CE1BCBE7-EDB7-4564-A11E-8D90868DF9D0}</Project>
+      <Name>OpenNos.XMLModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
